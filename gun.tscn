@@ -3,16 +3,14 @@
 [ext_resource type="Script" uid="uid://dcw0jnbyjbk6e" path="res://Gun2.gd" id="1_kw0bs"]
 [ext_resource type="Texture2D" uid="uid://cswb5do8rrj7q" path="res://pistol/pistol.png" id="1_vk1bi"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dk5gl"]
-radius = 972.06226
+[sub_resource type="CircleShape2D" id="CircleShape2D_kw0bs"]
+radius = 950.0
 
-[node name="Gun" type="Area2D" groups=["gun"]]
-collision_layer = 0
+[node name="EnemySweep" type="ShapeCast2D" groups=["gun"]]
+shape = SubResource("CircleShape2D_kw0bs")
+target_position = Vector2(0, 0)
 collision_mask = 4
 script = ExtResource("1_kw0bs")
-
-[node name="DetectionRange" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_dk5gl")
 
 [node name="WeaponPivot" type="Marker2D" parent="."]
 
@@ -23,10 +21,10 @@ texture = ExtResource("1_vk1bi")
 [node name="Bullethole" type="Marker2D" parent="WeaponPivot/Pistol" groups=["firing_point"]]
 position = Vector2(25, -11)
 
+[node name="bulletContainer" type="Node" parent="."]
+
 [node name="FiringSpeed" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
-
-[node name="bulletContainer" type="Node" parent="."]
 
 [connection signal="timeout" from="FiringSpeed" to="." method="_on_firing_speed_timeout"]

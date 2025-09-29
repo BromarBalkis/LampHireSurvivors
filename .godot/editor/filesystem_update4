@@ -1,0 +1,4 @@
+res://player.tscn
+res://scenes/player_ui.tscn
+res://gun.tscn
+res://Gun2.gd

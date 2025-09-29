@@ -1,4 +1,4 @@
-extends Area2D
+extends ShapeCast2D
 
 var enemies_in_range
 var target_enemy
@@ -9,11 +9,13 @@ var bullet_scene = preload("res://bullet.tscn")
 @onready var bullet_container = $bulletContainer
 
 func _physics_process(_delta: float) -> void:
-	enemies_in_range = get_overlapping_bodies()
+	enemies_in_range = collision_result #returns array
 	if enemies_in_range.size() > 0:
-		target_enemy = enemies_in_range.front()
-		look_at(target_enemy.global_position)
+		target_enemy = get_collider(0) #gets the closest guy
+		if target_enemy != null:
+			look_at(target_enemy.global_position)
 	rotate_gun()
+
 	
 func rotate_gun():
 	rotation = fmod(rotation, 2*PI) #modulo of 2pi (its in rads)
