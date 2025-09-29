@@ -49,6 +49,7 @@ func experience_handler(exp_value): #exp_value received from signal
 	player_exp += exp_value
 	print(player_exp)
 	if player_exp >= next_level_req: #level up
+		SignalBus.level_up.emit()
 		player_exp -= next_level_req
 		next_level_req += 50 #exp required growth, gonna need math
 	SignalBus.exp_updated.emit(player_exp/next_level_req)

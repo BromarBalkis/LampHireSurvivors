@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1sx7bic4uhdj"]
+[gd_scene load_steps=7 format=3 uid="uid://c1sx7bic4uhdj"]
 
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://brvlsv1ci5w12" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://du5i8r7jdycua" path="res://gun.tscn" id="3_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://bxfs2i8tlep8q" path="res://scenes/player_ui.tscn" id="4_hqtel"]
+[ext_resource type="PackedScene" uid="uid://bxuqase5mx6iy" path="res://scenes/level_up_screen.tscn" id="5_sweqy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 42.0119
@@ -33,3 +34,9 @@ offset_right = 960.0
 offset_bottom = -512.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="LevelUpScreen" parent="." instance=ExtResource("5_sweqy")]
+offset_left = -952.0
+offset_top = -513.0
+offset_right = -952.0
+offset_bottom = -513.0

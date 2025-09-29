@@ -2,3 +2,9 @@ res://player.tscn
 res://scenes/player_ui.tscn
 res://gun.tscn
 res://Gun2.gd
+res://scripts/SignalBus.gd
+res://scenes/level_up_screen.tscn
+res://scripts/level_up_screen.gd
+res://game.tscn
+res://player.gd
+res://bullet.gd

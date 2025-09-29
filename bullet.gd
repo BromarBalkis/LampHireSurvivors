@@ -1,16 +1,19 @@
 extends Area2D
 
 
-@export var damage: float = 35
-
+var damage
 var target
+var gun
+
 var speed = Vector2(1000,1000)
 var travelled_distance = 0
 var starting_position
 
 func _ready() -> void:
-	if get_tree().get_first_node_in_group("gun").target_enemy != null: #sometimes game would crash if it targeted a queue_freed enemy
-		target = get_tree().get_first_node_in_group("gun").target_enemy.global_position
+	gun = get_tree().get_first_node_in_group("gun")
+	damage = gun.damage
+	if gun.target_enemy != null: #sometimes game would crash if it targeted a queue_freed enemy
+		target = gun.target_enemy.global_position
 		starting_position = get_tree().get_first_node_in_group("firing_point").global_position #gotta be an easier way to pass this but thats a later problem
 		#without starting position the global_position is 0,0 in the calc
 		target = (target - starting_position).normalized()
