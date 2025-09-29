@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxfs2i8tlep8q"]
+
+[ext_resource type="Script" uid="uid://1np2mk5lg4w7" path="res://scripts/player_ui.gd" id="1_jkj6h"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_jkj6h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sk4pr"]
+texture = SubResource("CanvasTexture_jkj6h")
+modulate_color = Color(1, 1, 1, 0.63529414)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_sk4pr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_48xfa"]
+texture = SubResource("CanvasTexture_sk4pr")
+modulate_color = Color(1.2706519e-05, 0.9160526, 0.9160526, 1)
+
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jkj6h")
+
+[node name="ExpBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.025
+theme_override_styles/background = SubResource("StyleBoxTexture_sk4pr")
+theme_override_styles/fill = SubResource("StyleBoxTexture_48xfa")
+max_value = 1.0
