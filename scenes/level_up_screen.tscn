@@ -23,6 +23,7 @@ font_size = 50
 [node name="LevelUpScreen" type="Control"]
 process_mode = 3
 visible = false
+z_index = 20
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

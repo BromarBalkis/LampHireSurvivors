@@ -9,10 +9,11 @@ extends CharacterBody2D
 @export var player_max_hp: float = 100
 @export var player_defense: float = 0 #flat damage reduction
 @export var player_hp_regen: float = 0
-@export var player_projectile_size: float = 0
-@export var player_projectile_count: float = 0 #maybe
 @export var player_luck: float = 1
 @export var player_exp_mult: float = 1
+
+@export var player_projectile_size: float = 0
+@export var player_projectile_count: float = 0 #maybe
 
 var SPEED: float = 450.0
 var player_hp: float = 100

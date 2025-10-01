@@ -24,8 +24,8 @@ noise_type = 2
 fractal_octaves = 1
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uji5e"]
-seamless = true
 noise = SubResource("FastNoiseLite_ti4n0")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dssfe"]
 resource_local_to_scene = true
@@ -140,11 +140,12 @@ offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(64, 64)
+mouse_filter = 2
 color = Color(0.568627, 0.568627, 0.568627, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
-autoplay = "RESET"
 libraries = {
-"": SubResource("AnimationLibrary_8msef")
+&"": SubResource("AnimationLibrary_8msef")
 }
+autoplay = "RESET"
