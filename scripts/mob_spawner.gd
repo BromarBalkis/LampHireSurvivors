@@ -2,6 +2,8 @@ extends Path2D
 
 #@onready var fresh_mob = preload("res://slime.tscn")
 
+var mobCount = 5
+
 func _ready() -> void:
 	spawn_mob()
 
@@ -15,5 +17,7 @@ func spawn_mob() -> void:
 
 
 func _on_spawn_timer_timeout() -> void:
-	for i in 5: #spawns 5 mods, can replace 5 to dynamically change spawn amount
+	mobCount += 1
+	for i in mobCount: #spawns 5 mods, can replace 5 to dynamically change spawn amount
 		spawn_mob()
+		

@@ -35,3 +35,4 @@ func _on_option_3_pressed() -> void:
 		player.player_speed_mult += 0.2
 		SignalBus.value_update.emit()
 		get_tree().paused = false
+		
