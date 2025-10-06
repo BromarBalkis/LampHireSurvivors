@@ -1,9 +1,6 @@
-res://gun.tscn
-res://scenes/slice_particles.tscn
-res://scenes/slicer.tscn
-res://mob_spawn_path.tscn
-res://scripts/slicer.gd
 res://player.tscn
-res://player.gd
-res://scripts/slice_particles.gd
+res://scripts/slicer.gd
 res://scenes/slicerparticles2.tscn
+res://scripts/slice_particles.gd
+res://scenes/slicer.tscn
+res://scripts/SignalBus.gd

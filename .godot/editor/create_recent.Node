@@ -1,3 +1,5 @@
+CollisionShape2D
+Area2D
 GPUParticles2D
 Timer
 Node
@@ -11,5 +13,3 @@ Label
 Button
 ProgressBar
 PathFollow2D
-Path2D
-TextureProgressBar

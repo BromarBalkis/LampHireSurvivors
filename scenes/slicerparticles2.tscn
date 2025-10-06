@@ -1,23 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmoh5idx0rbbh"]
+[gd_scene load_steps=4 format=3 uid="uid://dmoh5idx0rbbh"]
 
-[ext_resource type="Texture2D" uid="uid://dj54loycbnfjr" path="res://assets/testslice.png" id="1_ovi7s"]
 [ext_resource type="Script" uid="uid://csohsieysr6sw" path="res://scripts/slice_particles.gd" id="2_76rkw"]
+
+[sub_resource type="Curve" id="Curve_ovi7s"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ovi7s"]
+radius = 34.132095
 
 [node name="GPUParticles2D" type="CPUParticles2D"]
 z_index = 5
 emitting = false
-amount = 3
-texture = ExtResource("1_ovi7s")
-lifetime = 0.2
+amount = 4
+lifetime = 0.3
 one_shot = true
-fixed_fps = 30
+fixed_fps = 60
+local_coords = true
 draw_order = 1
 direction = Vector2(0, 0)
 spread = 180.0
 gravity = Vector2(0, 0)
 angular_velocity_min = 567.51996
 angular_velocity_max = 660.69995
+orbit_velocity_min = 2.0
+orbit_velocity_max = 2.0
 angle_max = 315.50003
-scale_amount_min = 5.0
-scale_amount_max = 5.0
+scale_amount_min = 50.0
+scale_amount_max = 50.0
+scale_amount_curve = SubResource("Curve_ovi7s")
+color = Color(0.96862745, 0, 0, 0.5372549)
 script = ExtResource("2_76rkw")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ovi7s")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

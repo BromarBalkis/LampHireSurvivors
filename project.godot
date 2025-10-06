@@ -88,7 +88,7 @@ SignalBus="*res://scripts/SignalBus.gd"
 window/size/viewport_width=1620
 window/size/viewport_height=980
 window/size/always_on_top=true
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [dotnet]
 

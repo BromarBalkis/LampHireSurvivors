@@ -12,3 +12,5 @@ signal exp_updated(value)
 signal level_up
 @warning_ignore("unused_signal")
 signal value_update
+
+var damage #we ball (for slicerparticles script)
