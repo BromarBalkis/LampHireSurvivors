@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcb7rvy28c1g1"]
+
+[ext_resource type="Texture2D" uid="uid://dj54loycbnfjr" path="res://assets/testslice.png" id="1_v8ra3"]
+[ext_resource type="Script" uid="uid://csohsieysr6sw" path="res://scripts/slice_particles.gd" id="2_v8ra3"]
+
+[node name="SliceParticles" type="CPUParticles2D"]
+z_index = 5
+emitting = false
+amount = 3
+texture = ExtResource("1_v8ra3")
+lifetime = 0.2
+one_shot = true
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 82.5
+initial_velocity_max = 82.5
+angular_velocity_min = -590.65
+angular_velocity_max = 290.65
+angle_max = 179.5
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+script = ExtResource("2_v8ra3")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

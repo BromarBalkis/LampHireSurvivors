@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cswb5do8rrj7q" path="res://pistol/pistol.png" id="1_vk1bi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kw0bs"]
-radius = 494.9
+radius = 950.0
 
 [node name="EnemySweep" type="ShapeCast2D" groups=["gun"]]
 shape = SubResource("CircleShape2D_kw0bs")
