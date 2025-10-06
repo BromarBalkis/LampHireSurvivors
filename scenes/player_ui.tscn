@@ -31,3 +31,8 @@ anchor_bottom = 0.025
 theme_override_styles/background = SubResource("StyleBoxTexture_sk4pr")
 theme_override_styles/fill = SubResource("StyleBoxTexture_48xfa")
 max_value = 1.0
+
+[node name="HpBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 27.0

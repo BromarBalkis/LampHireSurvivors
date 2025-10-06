@@ -1,7 +1,8 @@
-CollisionShape2D
 Area2D
-GPUParticles2D
 Timer
+ProgressBar
+CollisionShape2D
+GPUParticles2D
 Node
 CPUParticles2D
 Marker2D
@@ -11,5 +12,3 @@ ShapeCast2D
 Node2D
 Label
 Button
-ProgressBar
-PathFollow2D

@@ -4,6 +4,7 @@ extends Control
 
 func _ready() -> void:
 	SignalBus.exp_updated.connect(exp_update)
+	#SignalBus.damage
 
 func exp_update(exp_ratio) -> void:
 	expbar.value = exp_ratio

@@ -4,3 +4,10 @@ res://scenes/slicerparticles2.tscn
 res://scripts/slice_particles.gd
 res://scenes/slicer.tscn
 res://scripts/SignalBus.gd
+res://mob_spawn_path.tscn
+res://game.tscn
+res://scripts/poison.gd
+res://scenes/player_ui.tscn
+res://player.gd
+res://scripts/player_ui.gd
+res://slime.tscn

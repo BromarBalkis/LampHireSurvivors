@@ -22,7 +22,7 @@ color = Color(0.74927026, 0.8224416, 0.8667546, 1)
 position = Vector2(826, 574)
 
 [node name="MobSpawnPath" parent="Player" instance=ExtResource("4_fc0e3")]
-position = Vector2(-872, -503)
+position = Vector2(-1858.0001, -1118.0001)
 
 [node name="Tree" parent="." instance=ExtResource("2_e2o6t")]
 position = Vector2(420, 647)

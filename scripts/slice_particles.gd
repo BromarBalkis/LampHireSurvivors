@@ -2,11 +2,15 @@ extends CPUParticles2D
 
 
 var damage
-# Called when the node enters the scene tree for the first time.
+
+#okay but it also has to inherit size and duration buffs,
+#possibly # of targets as well but that's in the slicer script
+#in this script: size, hurtbox duration
+#in slicer: attack speed/damage(already done)
+
 func _ready() -> void:
 	emitting = true
 	damage = SignalBus.damage
-	print(damage)
 
 func _on_finished() -> void:
 	queue_free()

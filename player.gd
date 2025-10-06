@@ -12,7 +12,7 @@ extends CharacterBody2D
 @export var player_luck: float = 1
 @export var player_exp_mult: float = 1
 
-@export var player_projectile_size: float = 0
+@export var player_projectile_size: float = 1
 @export var player_projectile_count: float = 0 #maybe
 
 var SPEED: float = 450.0
@@ -58,7 +58,8 @@ func experience_handler(exp_value): #exp_value received from signal
 func signal_connector() -> void:
 	SignalBus.mob_death.connect(experience_handler)
 
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("move_left"):
-		#pass
-	#pass
+func take_damage(mob_damage) -> void:
+	if $InvulnTimer == $InvulnTimer.is_stopped(): #timer isnt alr running
+		SignalBus.player_damaged.emit() #to update healthbar
+		player_hp -= mob_damage
+		$InvulnTimer.start()
