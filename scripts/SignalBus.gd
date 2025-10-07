@@ -18,4 +18,6 @@ signal player_damaged
 @warning_ignore("unused_signal")
 signal exp_collected(expvalue)
 
+signal player_death
+
 var damage #we ball (for slicerparticles script)

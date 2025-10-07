@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var player_speed_mult: float = 1 #movespeed
 @export var player_dmg_mult: float = 1 #of all weapons
 @export var player_atk_spd: float = 1 #of all weapons
+@export var player_hp: float = 100
 @export var player_max_hp: float = 100
 @export var player_defense: float = 0 #flat damage reduction
 @export var player_hp_regen: float = 0
@@ -13,12 +14,11 @@ extends CharacterBody2D
 @export var player_exp_mult: float = 1
 
 @export var player_projectile_size: float = 1
-@export var player_projectile_count: float = 0 #maybe
+@export var player_projectile_count: float = 1 #maybe
 
 var SPEED: float = 450.0
-var player_hp: float = 100
 var direction
-
+var explosion_scene = preload("res://scenes/entities/death_explosion.tscn")
 var player_exp: float = 0
 var next_level_req: float = 100
 
@@ -59,7 +59,15 @@ func signal_connector() -> void:
 	SignalBus.exp_collected.connect(experience_handler)
 
 func take_damage(mob_damage) -> void:
-	if $InvulnTimer == $InvulnTimer.is_stopped(): #timer isnt alr running
-		SignalBus.player_damaged.emit() #to update healthbar
+	if $InvulnTimer.is_stopped(): #timer isnt alr running
 		player_hp -= mob_damage
+		SignalBus.player_damaged.emit() #to update healthbar
 		$InvulnTimer.start()
+		
+		if player_hp <= 0:
+			var death_explosion = explosion_scene.instantiate()
+			$".".add_sibling(death_explosion)
+			$Camera2D.reparent(get_parent()) #moves camera to higher level so it doesnt get freed with player (thus zooming in)
+			
+			death_explosion.global_position = global_position
+			queue_free()

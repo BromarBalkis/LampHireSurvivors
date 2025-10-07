@@ -1,17 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1sx7bic4uhdj"]
+[gd_scene load_steps=9 format=3 uid="uid://c1sx7bic4uhdj"]
 
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://brvlsv1ci5w12" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://bxfs2i8tlep8q" path="res://scenes/player_ui.tscn" id="4_hqtel"]
 [ext_resource type="PackedScene" uid="uid://bxuqase5mx6iy" path="res://scenes/level_up_screen.tscn" id="5_sweqy"]
 [ext_resource type="PackedScene" uid="uid://cquooy1bktwwt" path="res://scenes/slicer.tscn" id="6_2hs0m"]
+[ext_resource type="Script" uid="uid://djvk7x82tnead" path="res://scripts/player_hurtbox.gd" id="7_1jxqw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 42.0119
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dw050"]
+radius = 48.0
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 2
 script = ExtResource("1_onrkg")
+player_hp = 25.0
 
 [node name="HappyBoo" parent="." instance=ExtResource("1_4flbx")]
 
@@ -23,17 +28,24 @@ shape = SubResource("CircleShape2D_onrkg")
 zoom = Vector2(0.5, 0.5)
 
 [node name="Slicer" parent="." instance=ExtResource("6_2hs0m")]
+visible = false
 
 [node name="PlayerUI" parent="." instance=ExtResource("4_hqtel")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -952.0
-offset_top = -536.0
-offset_right = 960.0
-offset_bottom = -512.0
+offset_left = -1619.0
+offset_top = -980.0
+offset_right = 1619.0
+offset_bottom = -947.7559
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="HpBar" parent="PlayerUI" index="1"]
+offset_left = 1299.0
+offset_top = 1812.0
+offset_right = 1946.5391
+offset_bottom = 1868.5
 
 [node name="LevelUpScreen" parent="." instance=ExtResource("5_sweqy")]
 offset_left = -952.0
@@ -44,3 +56,18 @@ offset_bottom = -513.0
 [node name="InvulnTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(0, 16)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("7_1jxqw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -40)
+shape = SubResource("CircleShape2D_dw050")
+debug_color = Color(0.8457389, 0.3129501, 0.5519731, 0.41960785)
+
+[connection signal="body_entered" from="Hurtbox" to="Hurtbox" method="_on_body_entered"]
+
+[editable path="PlayerUI"]

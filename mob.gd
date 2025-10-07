@@ -11,6 +11,7 @@ const EXP_SCENE = preload("res://scenes/entities/xp_orb.tscn")
 var max_hp
 var SPEED: = Vector2(200.0,200.0)
 var direction: Vector2
+var damage_to_player: float = 25
 
 
 func _ready() -> void:
@@ -18,8 +19,9 @@ func _ready() -> void:
 	$Slime.play_walk()
 
 func _physics_process(_delta: float) -> void:
-	direction = global_position.direction_to(player.global_position)
-	velocity = direction * SPEED
+	if player != null:
+		direction = global_position.direction_to(player.global_position)
+		velocity = direction * SPEED
 	
 	move_and_slide()
 
@@ -30,17 +32,17 @@ func take_damage(damage: float) -> void:
 	
 	if hp <= 0: #death
 		var smoke = SMOKE_SCENE.instantiate()
-		var exp = EXP_SCENE.instantiate()
+		var exp_orb = EXP_SCENE.instantiate()
 		
 		var roll = randf()
 		if roll < 0.80:
-			exp.exp_value = 20
+			exp_orb.exp_value = 20
 		elif roll < 0.95: 
-			exp.exp_value = 40
+			exp_orb.exp_value = 40
 		else:
-			exp.exp_value = 60
+			exp_orb.exp_value = 60
 		get_parent().add_child(smoke) #adds as a sibling of slimemob, so it doesnt get deleted
-		get_parent().add_child(exp)
+		get_parent().call_deferred("add_child", exp_orb)
 		smoke.global_position = global_position
-		exp.global_position = global_position
+		exp_orb.global_position = global_position
 		queue_free()

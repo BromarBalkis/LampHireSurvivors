@@ -4,7 +4,11 @@ var enemies_in_range
 var target_enemy
 var player
 
+#player-affected stats
 @export var damage: float = 35
+var bullet_size #kinda redundant? maybe for further enemies it matters #could have bullet penetration upgrade
+var projectile_count: float = 1
+
 
 var bullet_scene = preload("res://bullet.tscn")
 
@@ -37,10 +41,13 @@ func rotate_gun():
 func _on_firing_speed_timeout() -> void:
 	if enemies_in_range.size() > 0:
 		var bullet_instance = bullet_scene.instantiate()
-		bullet_container.add_child(bullet_instance)
-		bullet_instance.global_position = $WeaponPivot/Pistol/Bullethole.global_position
-		bullet_instance.global_rotation = $WeaponPivot/Pistol/Bullethole.global_rotation
+		for i in projectile_count:
+			bullet_container.add_child(bullet_instance)
+			bullet_instance.global_position = $WeaponPivot/Pistol/Bullethole.global_position
+			bullet_instance.global_rotation = $WeaponPivot/Pistol/Bullethole.global_rotation
 
 func update_values() -> void:
 	$FiringSpeed.wait_time = 0.5/player.player_atk_spd
 	damage = 35*player.player_dmg_mult
+	projectile_count = player.player_projectile_count
+	bullet_size = player.player_projectile_size

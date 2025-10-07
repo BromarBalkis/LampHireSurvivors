@@ -23,6 +23,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if target != null:
 		position += speed*target*delta
+	if target == null: #not sure if this will fix bullets stuck in place, i think that's caused by the target enemy being right on top of the gun then killed by something else
+		queue_free()
 
 
 func _on_body_entered(body: Node2D) -> void:
