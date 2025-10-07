@@ -56,7 +56,7 @@ func experience_handler(exp_value): #exp_value received from signal
 	
 	
 func signal_connector() -> void:
-	SignalBus.mob_death.connect(experience_handler)
+	SignalBus.exp_collected.connect(experience_handler)
 
 func take_damage(mob_damage) -> void:
 	if $InvulnTimer == $InvulnTimer.is_stopped(): #timer isnt alr running

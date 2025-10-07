@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @onready var player = get_tree().get_first_node_in_group("player")
 const SMOKE_SCENE = preload("res://smoke_explosion/smoke_explosion.tscn")
+const EXP_SCENE = preload("res://scenes/entities/xp_orb.tscn")
 
 @export var hp: float = 100
 @export var experience: float = 20
@@ -29,7 +30,17 @@ func take_damage(damage: float) -> void:
 	
 	if hp <= 0: #death
 		var smoke = SMOKE_SCENE.instantiate()
-		SignalBus.mob_death.emit(experience)
+		var exp = EXP_SCENE.instantiate()
+		
+		var roll = randf()
+		if roll < 0.80:
+			exp.exp_value = 20
+		elif roll < 0.95: 
+			exp.exp_value = 40
+		else:
+			exp.exp_value = 60
 		get_parent().add_child(smoke) #adds as a sibling of slimemob, so it doesnt get deleted
+		get_parent().add_child(exp)
 		smoke.global_position = global_position
+		exp.global_position = global_position
 		queue_free()
