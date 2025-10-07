@@ -103,6 +103,7 @@ enabled=PackedStringArray("res://addons/colorpicker_presets/plugin.cfg")
 player=""
 gun=""
 firing_point="where the bullet come from"
+mob_container=""
 
 [input]
 
@@ -134,6 +135,7 @@ move_down={
 3d_physics/layer_2="player"
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="PlayerDamage"
+2d_physics/layer_5="exp_orb"
 
 [rendering]
 

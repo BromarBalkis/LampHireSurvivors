@@ -40,3 +40,5 @@ position = Vector2(300, 362)
 
 [node name="SlimeMob3" parent="." instance=ExtResource("3_feb5d")]
 position = Vector2(1234, 295)
+
+[node name="MobContainer" type="Node" parent="." groups=["mob_container"]]

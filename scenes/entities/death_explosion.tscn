@@ -1,6 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://drpbydtmweqoy"]
+[gd_scene load_steps=27 format=3 uid="uid://drpbydtmweqoy"]
 
 [ext_resource type="Texture2D" uid="uid://cfsnwsr5coagr" path="res://ezgif.com-gif-to-sprite-converter.png" id="1_gb4jk"]
+[ext_resource type="Script" uid="uid://b2lsh6d1xne80" path="res://scripts/game_over_screen.gd" id="2_pv5ck"]
+[ext_resource type="PackedScene" uid="uid://b3u84076due2" path="res://game.tscn" id="3_qlhlw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pv5ck"]
 atlas = ExtResource("1_gb4jk")
@@ -132,6 +134,48 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_pv5ck"]
+font_size = 236
+
+[sub_resource type="LabelSettings" id="LabelSettings_qlhlw"]
+font_size = 116
+
+[sub_resource type="Animation" id="Animation_qlhlw"]
+resource_name = "fade in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.44, 0.44, 0.44, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gfskg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mavtf"]
+_data = {
+&"RESET": SubResource("Animation_gfskg"),
+&"fade in": SubResource("Animation_qlhlw")
+}
+
 [node name="death_explosion" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -140,3 +184,49 @@ sprite_frames = SubResource("SpriteFrames_6vav5")
 autoplay = "default"
 frame = 17
 frame_progress = 1.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_pv5ck")
+game_instance = ExtResource("3_qlhlw")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+self_modulate = Color(0.5251013, 0.5251013, 0.5251013, 1)
+offset_right = 1736.0
+offset_bottom = 1040.0
+color = Color(0.36659494, 0.36659452, 0.36659458, 0.61960787)
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 40.0
+offset_right = 1368.0
+offset_bottom = 363.0
+text = "YOU DED"
+label_settings = SubResource("LabelSettings_pv5ck")
+
+[node name="Label2" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 784.0
+offset_right = 1520.0
+offset_bottom = 1107.0
+text = "maybe him skill issue?"
+label_settings = SubResource("LabelSettings_qlhlw")
+
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 472.0
+offset_right = 1256.0
+offset_bottom = 648.0
+theme_override_font_sizes/font_size = 41
+text = "we go agane"
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mavtf")
+}
+autoplay = "fade in"
+
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="CanvasLayer" method="_on_button_pressed"]

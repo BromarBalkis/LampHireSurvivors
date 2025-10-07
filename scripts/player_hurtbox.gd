@@ -1,8 +1,13 @@
-extends Area2D
+extends ShapeCast2D
 
 
 @onready var player = get_parent()
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.collision_layer == 4:
-		player.take_damage(body.damage_to_player)
+
+func _physics_process(_delta: float) -> void:
+	damage_taking_business()
+	
+
+func damage_taking_business() -> void:
+	if is_colliding() && get_collider(0) != null: #as long as it can only collide with mobs this should be fine
+		player.take_damage(get_collider(0).damage_to_player) #0 = closest to player

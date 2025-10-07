@@ -71,3 +71,8 @@ func take_damage(mob_damage) -> void:
 			
 			death_explosion.global_position = global_position
 			queue_free()
+
+
+func _on_pickup_area_area_entered(area: Area2D) -> void:
+	if area.collision_layer == 16:
+		area.picking_up = true #for exp orbs exclusively
