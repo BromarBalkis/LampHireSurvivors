@@ -25,4 +25,5 @@ func _physics_process(delta: float) -> void:
 		in_pickup_range(delta)
 	
 func in_pickup_range(delta) -> void:
-	global_position = global_position.move_toward(player.global_position, delta*1250)
+	if player != null:
+		global_position = global_position.move_toward(player.global_position, delta*1250)

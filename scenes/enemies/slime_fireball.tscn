@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://c87o766i7ewy0"]
+
+[ext_resource type="Texture2D" uid="uid://bt6jg34euu6kj" path="res://addons/morgan trueman.png" id="1_bw3ce"]
+[ext_resource type="Script" uid="uid://derl8amkpsa2a" path="res://scripts/enemy_projectiles/slime_fireball.gd" id="1_wel7b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wel7b"]
+radius = 21.023796
+
+[node name="SlimeFireball" type="Node2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_wel7b")
+
+[node name="FireballParticles" type="CPUParticles2D" parent="."]
+scale = Vector2(2, 2)
+amount = 200
+lifetime = 0.3
+emission_shape = 1
+emission_sphere_radius = 10.24
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 25.0
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+color = Color(0.98281664, 0, 0.012107194, 1)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.059336882, 0.059336826)
+texture = ExtResource("1_bw3ce")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_wel7b")
+
+[connection signal="finished" from="FireballParticles" to="." method="_on_fireball_particles_finished"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

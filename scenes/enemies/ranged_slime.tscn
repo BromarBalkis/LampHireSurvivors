@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cu4bchwylt20i"]
+
+[ext_resource type="Script" uid="uid://c03evv0iln3js" path="res://scripts/ranged_slime.gd" id="1_2tvo7"]
+[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://characters/slime/slime.tscn" id="2_lpp0q"]
+[ext_resource type="Script" uid="uid://u86qnx6r67sw" path="res://scripts/progress_bar.gd" id="3_m0eci"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2tvo7"]
+radius = 47.010635
+
+[node name="RangedSlime" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_2tvo7")
+
+[node name="Slime" parent="." instance=ExtResource("2_lpp0q")]
+modulate = Color(0.9999947, 0.22754052, 0.44479457, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -25)
+shape = SubResource("CircleShape2D_2tvo7")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -54.0
+offset_top = -115.0
+offset_right = 58.0
+offset_bottom = -88.0
+script = ExtResource("3_m0eci")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

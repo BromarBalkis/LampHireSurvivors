@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3u84076due2"]
+[gd_scene load_steps=6 format=3 uid="uid://b3u84076due2"]
 
 [ext_resource type="PackedScene" uid="uid://c1sx7bic4uhdj" path="res://player.tscn" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://c4r0jdhpl1vnl" path="res://PineTree.tscn" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://d1dvx2tras4t4" path="res://slime.tscn" id="3_feb5d"]
 [ext_resource type="PackedScene" uid="uid://bf7ms01x67yy1" path="res://mob_spawn_path.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://cu4bchwylt20i" path="res://scenes/enemies/ranged_slime.tscn" id="5_7jktm"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -38,7 +39,7 @@ position = Vector2(900, 1086)
 [node name="SlimeMob" parent="." instance=ExtResource("3_feb5d")]
 position = Vector2(300, 362)
 
-[node name="SlimeMob3" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(1234, 295)
-
 [node name="MobContainer" type="Node" parent="." groups=["mob_container"]]
+
+[node name="RangedSlime" parent="." instance=ExtResource("5_7jktm")]
+position = Vector2(613, 961)
