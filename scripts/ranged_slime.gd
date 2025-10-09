@@ -14,6 +14,8 @@ var SPEED: = Vector2(200.0,200.0)
 var direction: Vector2
 var damage_to_player: float = 25
 var distance_to_player: float
+var has_shot: bool = true
+
 
 func _ready() -> void:
 	max_hp = hp
@@ -25,11 +27,13 @@ func _physics_process(_delta: float) -> void:
 		if distance_to_player >= 750:
 			direction = global_position.direction_to(player.global_position)
 			velocity = direction * SPEED
-			if !$ShootTimer.is_paused(): #stop from repeatedly restarting timer
-				$ShootTimer.set_paused(true)
+			#if !$ShootTimer.is_paused(): #stop from repeatedly restarting timer
+				#$ShootTimer.set_paused(true)
 		else:
 			velocity = Vector2.ZERO
-			$ShootTimer.set_paused(false)
+			#$ShootTimer.set_paused(false)
+			if has_shot:
+				shoot()
 	
 	move_and_slide()
 
@@ -57,6 +61,11 @@ func take_damage(damage: float) -> void:
 
 
 func _on_shoot_timer_timeout() -> void:
+	has_shot = true
+
+func shoot():
+	has_shot = false
+	$ShootTimer.start()
 	var fireball = FIREBALL.instantiate() 
 	fireball.starting_position = global_position
 	get_tree().get_first_node_in_group("mob_container").add_child.call_deferred(fireball) #so it doesnt despawn when the mob dies

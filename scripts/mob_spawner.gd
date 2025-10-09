@@ -1,23 +1,34 @@
 extends Path2D
 
-#@onready var fresh_mob = preload("res://slime.tscn")
+#array of spawnable mobs that's selected based on the number of times mobs have been spawned?
 
-var mobCount = 5
+
+var waveCount = 0
 
 func _ready() -> void:
-	spawn_mob()
+	spawn_slime()
 
 
-func spawn_mob() -> void:
+func spawn_slime() -> void:
 	#fresh_mob.instantiate()
 	var fresh_mob = preload("res://slime.tscn").instantiate()
 	$PathFollow2D.progress_ratio = randf()
 	fresh_mob.global_position = $PathFollow2D.global_position
 	get_tree().get_first_node_in_group("mob_container").add_child.call_deferred(fresh_mob) #so the spawn path can follow the player without moving the fresh slimes with the player
 
+func spawn_ranged_slime() -> void:
+	#fresh_mob.instantiate()
+	var fresh_mob = preload("res://scenes/enemies/ranged_slime.tscn").instantiate()
+	$PathFollow2D.progress_ratio = randf()
+	fresh_mob.global_position = $PathFollow2D.global_position
+	get_tree().get_first_node_in_group("mob_container").add_child.call_deferred(fresh_mob) 
 
 func _on_spawn_timer_timeout() -> void:
-	mobCount += 1
-	for i in mobCount: #spawns 5 mods, can replace 5 to dynamically change spawn amount
-		spawn_mob()
+	waveCount += 1
+	
+	for i in waveCount:
+		spawn_slime()
 		
+	for i in (waveCount)/3: #increase number of ranged slimes every 3 waves
+		spawn_ranged_slime()
+	

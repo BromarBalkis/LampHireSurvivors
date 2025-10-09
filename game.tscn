@@ -42,4 +42,4 @@ position = Vector2(300, 362)
 [node name="MobContainer" type="Node" parent="." groups=["mob_container"]]
 
 [node name="RangedSlime" parent="." instance=ExtResource("5_7jktm")]
-position = Vector2(613, 961)
+position = Vector2(107, 1151)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxfs2i8tlep8q"]
+[gd_scene load_steps=7 format=3 uid="uid://bxfs2i8tlep8q"]
 
 [ext_resource type="Script" uid="uid://1np2mk5lg4w7" path="res://scripts/player_ui.gd" id="1_jkj6h"]
 [ext_resource type="Script" uid="uid://bytsesnip1pp2" path="res://scripts/player_hp_bar.gd" id="2_sk4pr"]
@@ -14,9 +14,6 @@ modulate_color = Color(1, 1, 1, 0.63529414)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_48xfa"]
 texture = SubResource("CanvasTexture_sk4pr")
 modulate_color = Color(1.2706519e-05, 0.9160526, 0.9160526, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jkj6h"]
-bg_color = Color(0, 0.6987805, 0.1647977, 1)
 
 [node name="PlayerUI" type="Control"]
 layout_mode = 3
@@ -42,8 +39,6 @@ offset_left = 512.0
 offset_top = 912.0
 offset_right = 1159.5391
 offset_bottom = 968.5
-theme_override_styles/fill = SubResource("StyleBoxFlat_jkj6h")
 value = 100.0
-rounded = true
 show_percentage = false
 script = ExtResource("2_sk4pr")

@@ -5,7 +5,7 @@ extends Node2D
 var damage: float = 35
 var target
 var starting_position
-var speed = Vector2(1000,1000)
+var speed = Vector2(750,750)
 
 
 func _ready() -> void:
