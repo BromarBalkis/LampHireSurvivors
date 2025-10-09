@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7yn8og16vhf7"]
+
+[ext_resource type="Script" uid="uid://rskiq3yg2epb" path="res://scripts/weapons/boomerang_projectile.gd" id="1_c7etp"]
+[ext_resource type="Texture2D" uid="uid://bcuqrgdebqyb1" path="res://banana.png" id="1_wkiaa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c7etp"]
+radius = 58.249462
+
+[node name="Bananarang" type="Node2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_c7etp")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_c7etp")
+debug_color = Color(3.3210217e-06, 0.6452117, 0.27147648, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hurtbox"]
+scale = Vector2(0.065026306, 0.065026365)
+texture = ExtResource("1_wkiaa")
+
+[node name="ReturnTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_body_entered"]
+[connection signal="timeout" from="ReturnTimer" to="." method="_on_return_timer_timeout"]

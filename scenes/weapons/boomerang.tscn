@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwpwiuokyqi24"]
+
+[ext_resource type="Script" uid="uid://w2ea4n345hwr" path="res://scripts/weapons/boomerang.gd" id="1_ostrr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ostrr"]
+radius = 1000.0
+
+[node name="Boomerang" type="Node2D"]
+
+[node name="TargetRange" type="ShapeCast2D" parent="."]
+shape = SubResource("CircleShape2D_ostrr")
+target_position = Vector2(0, 0)
+collision_mask = 4
+script = ExtResource("1_ostrr")
+
+[node name="BananaContainer" type="Node" parent="TargetRange"]
+
+[node name="FiringSpeed" type="Timer" parent="TargetRange"]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="TargetRange/FiringSpeed" to="TargetRange" method="_on_firing_speed_timeout"]
