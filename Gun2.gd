@@ -39,12 +39,13 @@ func rotate_gun():
 
 
 func _on_firing_speed_timeout() -> void:
-	if enemies_in_range.size() > 0:
-		var bullet_instance = bullet_scene.instantiate()
-		for i in projectile_count:
-			bullet_container.add_child(bullet_instance)
-			bullet_instance.global_position = $WeaponPivot/Pistol/Bullethole.global_position
-			bullet_instance.global_rotation = $WeaponPivot/Pistol/Bullethole.global_rotation
+	if visible:
+		if enemies_in_range.size() > 0:
+			var bullet_instance = bullet_scene.instantiate()
+			for i in projectile_count:
+				bullet_container.add_child(bullet_instance)
+				bullet_instance.global_position = $WeaponPivot/Pistol/Bullethole.global_position
+				bullet_instance.global_rotation = $WeaponPivot/Pistol/Bullethole.global_rotation
 
 func update_values() -> void:
 	$FiringSpeed.wait_time = 0.5/player.player_atk_spd

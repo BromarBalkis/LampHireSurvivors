@@ -20,7 +20,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	enemies_in_range = collision_result #returns array
 	if enemies_in_range.size() > 0:
-		target_enemy = get_collider(0) #gets the closest guy
+		target_enemy = get_collider(0) #gets the closest guys
 		shoot()
 
 func _on_firing_speed_timeout() -> void: #!null stops crashes in certain cases
