@@ -1,13 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3u84076due2"]
+[gd_scene load_steps=5 format=3 uid="uid://b3u84076due2"]
 
-[ext_resource type="PackedScene" uid="uid://c1sx7bic4uhdj" path="res://player.tscn" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://cblda6mvdl106" path="res://scripts/main_game_manager.gd" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://c4r0jdhpl1vnl" path="res://PineTree.tscn" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://d1dvx2tras4t4" path="res://slime.tscn" id="3_feb5d"]
-[ext_resource type="PackedScene" uid="uid://bf7ms01x67yy1" path="res://mob_spawn_path.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://cu4bchwylt20i" path="res://scenes/enemies/ranged_slime.tscn" id="5_7jktm"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_7jktm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -30
@@ -17,12 +17,6 @@ z_index = -5
 offset_right = 1921.5259
 offset_bottom = 1075.0
 color = Color(0.74927026, 0.8224416, 0.8667546, 1)
-
-[node name="Player" parent="." instance=ExtResource("1_80nbo")]
-position = Vector2(826, 574)
-
-[node name="MobSpawnPath" parent="Player" instance=ExtResource("4_fc0e3")]
-position = Vector2(-1858.0001, -1118.0001)
 
 [node name="Tree" parent="." instance=ExtResource("2_e2o6t")]
 position = Vector2(420, 647)

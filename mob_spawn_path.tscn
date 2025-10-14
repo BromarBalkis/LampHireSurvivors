@@ -9,7 +9,7 @@ _data = {
 point_count = 5
 
 [node name="MobSpawnPath" type="Path2D"]
-position = Vector2(-969.13043, -549.17395)
+position = Vector2(-1920.0001, -1088)
 scale = Vector2(2.009511, 2.0095108)
 curve = SubResource("Curve2D_0u56x")
 script = ExtResource("1_ajptq")

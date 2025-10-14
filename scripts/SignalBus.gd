@@ -21,3 +21,6 @@ signal exp_collected(expvalue)
 signal player_death
 
 var damage #we ball (for slicerparticles script)
+
+#global variable time!
+var selected_character = preload("res://player.tscn") #to be determined in character select

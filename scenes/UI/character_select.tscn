@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://enthi1n5ny5a"]
+
+[ext_resource type="Texture2D" uid="uid://b4xrpvlgaf6lk" path="res://infirmary key.png" id="1_0dtwr"]
+[ext_resource type="Script" uid="uid://68dijgg48wb2" path="res://scripts/UI/character_select.gd" id="1_6e77h"]
+
+[node name="Character_select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6e77h")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_0dtwr")
+
+[node name="Char1Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 288.0
+offset_right = 928.0
+offset_bottom = 776.0
+text = "CHARACTER 1"
+
+[node name="Char2Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1048.0
+offset_top = 288.0
+offset_right = 1472.0
+offset_bottom = 776.0
+text = "CHARACTER 2"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 840.0
+offset_right = 528.0
+offset_bottom = 928.0
+text = "RETURN"
+
+[connection signal="pressed" from="Char1Button" to="." method="_on_char_1_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

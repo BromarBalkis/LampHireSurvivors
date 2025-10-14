@@ -221,6 +221,15 @@ theme_override_font_sizes/font_size = 41
 text = "we go agane"
 autowrap_mode = 2
 
+[node name="MainMenu" type="Button" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 680.0
+offset_right = 1161.0
+offset_bottom = 800.0
+theme_override_font_sizes/font_size = 48
+text = "im a big baby quitter"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_mavtf")
@@ -228,3 +237,4 @@ libraries = {
 autoplay = "fade in"
 
 [connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="CanvasLayer" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/MainMenu" to="CanvasLayer" method="_on_main_menu_pressed"]

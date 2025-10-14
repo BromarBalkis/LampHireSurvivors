@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://cauc8o153f4a4"]
+
+[ext_resource type="Script" uid="uid://cmnxo2lr2qryk" path="res://scripts/UI/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://c8jranyghxhnq" path="res://RQRR3298.PNG" id="1_l6cm7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekxnf"]
+bg_color = Color(0.05234524, 0.2827357, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
+bg_color = Color(1, 0.19275594, 0.7438898, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ekxnf"]
+font_size = 71
+
+[node name="Main menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ekxnf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = -40.0
+offset_top = -32.0
+offset_right = 1648.0
+offset_bottom = 1000.0
+texture = ExtResource("1_l6cm7")
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 584.0
+offset_right = 1024.0
+offset_bottom = 649.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ekxnf")
+text = "PLAY"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 680.0
+offset_right = 1024.0
+offset_bottom = 752.0
+text = "QUIT"
+
+[node name="title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 56.0
+offset_right = 1267.0
+offset_bottom = 153.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+text = "RAMP HIGHER SURVIVORS"
+label_settings = SubResource("LabelSettings_ekxnf")
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
