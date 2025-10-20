@@ -3,6 +3,8 @@ extends ShapeCast2D
 
 @onready var player = get_parent()
 
+#func _process(_delta: float) -> void:
+		#damage_taking_business()
 
 func _physics_process(_delta: float) -> void:
 	damage_taking_business()

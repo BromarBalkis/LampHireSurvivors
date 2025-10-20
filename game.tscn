@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cblda6mvdl106" path="res://scripts/main_game_manager.gd" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://c4r0jdhpl1vnl" path="res://PineTree.tscn" id="2_e2o6t"]
-[ext_resource type="PackedScene" uid="uid://d1dvx2tras4t4" path="res://slime.tscn" id="3_feb5d"]
-[ext_resource type="PackedScene" uid="uid://cu4bchwylt20i" path="res://scenes/enemies/ranged_slime.tscn" id="5_7jktm"]
+[ext_resource type="PackedScene" uid="uid://dfcn3doar4u6s" path="res://scenes/enemies/dash_slime.tscn" id="4_7jktm"]
+[ext_resource type="PackedScene" uid="uid://bmiya525vg0g2" path="res://scenes/UI/pause_menu.tscn" id="5_ryrav"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -27,13 +27,9 @@ position = Vector2(823, 345)
 [node name="Tree3" parent="." instance=ExtResource("2_e2o6t")]
 position = Vector2(1170, 555)
 
-[node name="SlimeMob2" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(900, 1086)
-
-[node name="SlimeMob" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(300, 362)
-
 [node name="MobContainer" type="Node" parent="." groups=["mob_container"]]
 
-[node name="RangedSlime" parent="." instance=ExtResource("5_7jktm")]
-position = Vector2(107, 1151)
+[node name="pause_menu" parent="." instance=ExtResource("5_ryrav")]
+
+[node name="DashSlime" parent="." instance=ExtResource("4_7jktm")]
+position = Vector2(613, 640)

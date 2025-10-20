@@ -5,7 +5,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_3d2cl"]
 radius = 650.0
 
-[node name="ShapeCast2D" type="ShapeCast2D"]
+[node name="Slicer" type="ShapeCast2D"]
 shape = SubResource("CircleShape2D_3d2cl")
 target_position = Vector2(0, 0)
 collision_mask = 4

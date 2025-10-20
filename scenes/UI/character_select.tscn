@@ -1,7 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://enthi1n5ny5a"]
+[gd_scene load_steps=8 format=3 uid="uid://enthi1n5ny5a"]
 
 [ext_resource type="Texture2D" uid="uid://b4xrpvlgaf6lk" path="res://infirmary key.png" id="1_0dtwr"]
 [ext_resource type="Script" uid="uid://68dijgg48wb2" path="res://scripts/UI/character_select.gd" id="1_6e77h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6e77h"]
+bg_color = Color(0.79067236, 0.5470184, 0, 0.76862746)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0pq7"]
+bg_color = Color(0.7921569, 0.54509807, 0, 0.5176471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ql5lg"]
+bg_color = Color(0.20096055, 0.6133146, 1, 0.7176471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2hfbg"]
+bg_color = Color(0.2, 0.6117647, 1, 0.5058824)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_og2vi"]
 
 [node name="Character_select" type="Control"]
 layout_mode = 3
@@ -26,6 +40,8 @@ offset_left = 504.0
 offset_top = 288.0
 offset_right = 928.0
 offset_bottom = 776.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_6e77h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i0pq7")
 text = "CHARACTER 1"
 
 [node name="Char2Button" type="Button" parent="."]
@@ -34,6 +50,8 @@ offset_left = 1048.0
 offset_top = 288.0
 offset_right = 1472.0
 offset_bottom = 776.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ql5lg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2hfbg")
 text = "CHARACTER 2"
 
 [node name="BackButton" type="Button" parent="."]
@@ -42,7 +60,9 @@ offset_left = 88.0
 offset_top = 840.0
 offset_right = 528.0
 offset_bottom = 928.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_og2vi")
 text = "RETURN"
 
 [connection signal="pressed" from="Char1Button" to="." method="_on_char_1_button_pressed"]
+[connection signal="pressed" from="Char2Button" to="." method="_on_char_2_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
