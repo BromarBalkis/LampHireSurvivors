@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b3u84076due2"]
 
-[ext_resource type="Script" uid="uid://cblda6mvdl106" path="res://scripts/main_game_manager.gd" id="1_7jktm"]
+[ext_resource type="Script" path="res://scripts/main_game_manager.gd" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://c4r0jdhpl1vnl" path="res://PineTree.tscn" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://dfcn3doar4u6s" path="res://scenes/enemies/dash_slime.tscn" id="4_7jktm"]
 [ext_resource type="PackedScene" uid="uid://bmiya525vg0g2" path="res://scenes/UI/pause_menu.tscn" id="5_ryrav"]
